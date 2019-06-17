@@ -27,13 +27,8 @@ def getvecmatrix():
         for file in filelist:
             filepath = os.path.join(path, file)
             words = dtu.readdoc_word(filepath)
-            begin=words.find("公诉机关指控")
-            if begin == -1:
-                begin=0
-            end=words.find("判决如下")
-            if end==-1:
-                end=len(words)
-            words=words[begin:end]
+
+            print(words)
             data.append(words)
     matrix=data2vec(data)
     return matrix

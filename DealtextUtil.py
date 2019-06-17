@@ -42,6 +42,13 @@ class DealtextUtil(object):
         for i in range(len(doc1.paragraphs)):
             text1 = doc1.paragraphs[i].text
             textc += text1
+        begin = textc.find("公诉机关指控")
+        if begin == -1:
+            begin = 0
+        end = textc.find("判决如下")
+        if end == -1:
+            end = len(textc)
+        textc = textc[begin:end]
         textc = self.deal_text(textc)
         textwb = jieba.cut(textc, cut_all=False)
         str_out = ' '.join(textwb).replace('，', '').replace('。', '').replace('？', '').replace('！', '') \
